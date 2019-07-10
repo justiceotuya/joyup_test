@@ -1,0 +1,71 @@
+.root {
+    display: flex
+}
+
+.header {
+    height: 8em;
+    display: flex;
+    justify-content: flex-end;
+    background-color: #69e2c7 !important
+}
+
+.header__items {
+    justify-content: space-between;
+    margin-bottom: 1em
+}
+
+.content {
+    flex-grow: 1;
+    padding: 1em
+}
+
+.toolbar {
+    height: 8em;
+}
+
+
+.drawerPaper {
+    width: 240px
+}
+
+
+
+@media screen and (min-width: 600px) {
+    .drawer {
+        width: 240px;
+        flex-shrink: 0;
+    }
+
+    .toolbar {
+        height: 64px;
+    }
+
+    .header {
+        width: calc(100% - 240px);
+        height: 4em;
+        min-height: 56px;
+        box-shadow: none !important
+    }
+
+    .header__items {
+        justify-content: center;
+        margin-bottom: 0em;
+
+    }
+
+    .header__image {
+        margin-left: 240px
+    }
+
+    .header__menuButton,
+    .header__shoppingCart {
+        display: none !important;
+    }
+}
+
+
+/*
+
+,
+toolbar: theme.mixins.toolbar,
+ */
