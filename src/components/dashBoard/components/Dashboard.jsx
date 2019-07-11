@@ -1,19 +1,23 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import classes from './Dashboard.module.css';
+import { IconButton, Typography } from '@material-ui/core';
 import Layout from '../../layout';
-import {
-    Typography,
-    IconButton,
-} from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
+
 import AgentCards from './AgentCards';
 import agentData from '../../../data/data.json'
+import classes from './Dashboard.module.css';
+import { STRINGS } from '../constants';
 
-export default function Dashboard({ children }) {
+require('react-dom');
+window.React2 = require('react');
+
+//This component renders the dashboard of the app
+const Dashboard = () => {
     const [isSearchOpen, setIsSearchOpen] = useState(false);
-    const [data] = useState(agentData)
-    const [searchData, setSearchData] = useState(data)
+    const [data, setData] = useState(agentData);
+    const [searchData, setSearchData] = useState(data);
+    const { SEARCH_AGENT, NEW_ORDERS, TOTAL } = STRINGS;
+
 
     const {
         card,
@@ -41,30 +45,51 @@ export default function Dashboard({ children }) {
     return (
         <Layout>
             <section className={`${card} ${card__search}`}>
-                {isSearchOpen ? (
-                    <input placeholder='search here ..' className={searchInput__mobile} onChange={e => handleAgentSearch(e)} />
-                ) : (
-                        <>
-                            <Typography variant='subtitle1' color='primary'>
-                                New Orders
-                        </Typography>
-                            <Typography variant='body2' color='textPrimary'>
-                                {searchData.length} total
-                        </Typography>
-                        </>
-                    )}
+                {
+                    isSearchOpen ? (
+                        <input
+                            placeholder={SEARCH_AGENT}
+                            className={searchInput__mobile}
+                            onChange={
+                                e => handleAgentSearch(e)
+                            }
+                        />
+                    ) : (
+                            <>
+                                <Typography
+                                    variant='subtitle1'
+                                    color='primary'
+                                >
+                                    {NEW_ORDERS}
+                                </Typography>
+                                <Typography
+                                    variant='body2'
+                                    color='textPrimary'
+                                >
+                                    {`${searchData.length} ${TOTAL}`}
+                                </Typography>
+                            </>
+                        )}
 
                 <IconButton
                     color='primary'
                     edge='start'
                     className={dashboard__search_button}
-                    onClick={() => setIsSearchOpen(!isSearchOpen)}>
+                    onClick={
+                        () => setIsSearchOpen(!isSearchOpen)
+                    }>
                     <SearchIcon />
                 </IconButton>
 
                 <div className={search__desktop}>
                     <SearchIcon className={search__desktop_icon} />
-                    <input placeholder='search here ..' className={searchInput__desktop} onChange={e => handleAgentSearch(e)} />
+                    <input
+                        placeholder={SEARCH_AGENT}
+                        className={searchInput__desktop}
+                        onChange={
+                            e => handleAgentSearch(e)
+                        }
+                    />
                 </div>
             </section>
             <AgentCards data={searchData} />
@@ -72,6 +97,4 @@ export default function Dashboard({ children }) {
     );
 }
 
-Dashboard.propTypes = {
-    children: PropTypes.object,
-};
+export default Dashboard;

@@ -105,6 +105,16 @@
     display: none !important;
 }
 
+.formControl {
+    min-width: 120px;
+    margin: 1px
+}
+
+.selectEmpty {
+    margin-top: -15px;
+    margin-bottom: 30px;
+}
+
 @media screen and (min-width: 600px) {
     .card {
         border-radius: 0 5px 5px 5px;

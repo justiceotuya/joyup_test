@@ -1,15 +1,22 @@
+import { Avatar, Divider, IconButton, Typography } from '@material-ui/core';
 import React, { useState } from 'react';
-import {
-    Typography,
-    IconButton,
-    Divider,
-    Avatar
-} from '@material-ui/core';
+import PropTypes from 'prop-types';
 import SettingIcon from '@material-ui/icons/Settings';
-import classes from './Dashboard.module.css';
-import AgentConfiguration from './AgentsConfiguration'
 
+import AgentConfiguration from './AgentsConfiguration'
+import classes from './Dashboard.module.css';
+import { STRINGS } from '../constants'
+
+const { MARVEL_COMICS } = STRINGS
+
+//This component creates each card in the dashboard
 const AgentCards = ({ data }) => {
+    const [open, setOpen] = useState(false);
+    //we need to keep track of the card that contains the info that is currently selected
+    const [currentItem, setCurrentItem] = useState({})
+    const [selectedFacebookAccount, setSelectedFacebookAccount] = useState('');
+    const [selectedSquareAccount, setSelectedSquareAccount] = useState('');
+
     const {
         card,
         card__box,
@@ -24,10 +31,7 @@ const AgentCards = ({ data }) => {
         settings_icon
     } = classes;
 
-    const [open, setOpen] = useState(false);
-    const [currentItem, setCurrentItem] = useState({})
-    const [selectedFacebookAccount, setSelectedFacebookAccount] = useState('');
-    const [selectedSquareAccount, setSelectedSquareAccount] = useState('');
+
 
     const handleFacebookAccountChange = (event) => {
         setSelectedFacebookAccount(event.target.value)
@@ -37,19 +41,20 @@ const AgentCards = ({ data }) => {
         setSelectedSquareAccount(event.target.value)
     }
 
+    //sets the selected card
     const handleConfigureButtonClick = (e, items) => {
         setOpen(true);
         data.map(item => {
             const { id } = item
             if (id === items) {
-             return  setCurrentItem(item)
-            }else{
+                return setCurrentItem(item)
+            } else {
                 return null
             }
         })
     }
 
-
+    //closing the modal
     const handleClose = () => {
         setOpen(false);
         setSelectedSquareAccount('')
@@ -78,7 +83,6 @@ const AgentCards = ({ data }) => {
 
                                 {/* image and name */}
                                 <div className={card__box_company}>
-
                                     <Avatar src={logo} alt='company' className={card__box_company_logo} />
                                     <Typography variant='body1' color='primary'>
                                         {name}
@@ -93,8 +97,8 @@ const AgentCards = ({ data }) => {
 
                                 <div className={card__box_last_item}>
                                     <Typography variant='body1' color='textPrimary'>
-                                        Marvel Comics
-                        </Typography>
+                                        {MARVEL_COMICS}
+                                    </Typography>
 
                                     <span>
                                         <Typography variant='body2' color='textPrimary'>
@@ -119,8 +123,11 @@ const AgentCards = ({ data }) => {
                 handleSquareAccountChange={handleSquareAccountChange}
             />
         </main>
-
     )
 
 }
 export default AgentCards
+
+AgentCards.propTypes = {
+    data: PropTypes.array,
+}

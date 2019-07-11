@@ -1,3 +1,4 @@
+import { Avatar, FormControl, MenuItem, Select } from '@material-ui/core'
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -5,17 +6,14 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import {
-    Avatar,
-    FormControl,
-    MenuItem,
-    Select,
-} from '@material-ui/core'
+import PropTypes from 'prop-types';
 
 import classes from './Dashboard.module.css'
+import { STRINGS } from '../constants'
 
-const AgentConfiguration = (props) => {
+const { NONE, OK } = STRINGS
 
+const AgentConfiguration = props => {
     const {
         open,
         handleClose,
@@ -24,26 +22,39 @@ const AgentConfiguration = (props) => {
         selectedSquareAccount,
         handleFacebookAccountChange,
         handleSquareAccountChange,
-    } = props
+    } = props;
 
-    const { card__box_company_logo } = classes
+    // styles
+    const {
+        card__box_company_logo,
+        formControl,
+        selectEmpty
+    } = classes;
+
     const { name, logo, squareAccountsData, facebookAccountsData } = data
-    const generateAccount = (account = '', nameOfAccount = '', accountsData = [], handlerFunction = null) => {
 
+    /**
+     *
+     * @param {String} account The currect selected account of the social media network e.g facebook
+     * @param {string} nameOfAccount The name of the social media network
+     * @param {Array} accountsData The data for thet account
+     * @param {Func} handlerFunction The function thats perform selection action when an account of a social media is selected
+     */
+
+    const generateAccount = (account = '', nameOfAccount = '', accountsData = [], handlerFunction = null) => {
         return (
             <>
                 <DialogContentText>{nameOfAccount}: <strong>{`${account}`}</strong> </DialogContentText>
-
-                <FormControl className={classes.formControl}>
+                <FormControl className={formControl}>
                     <Select
                         value={account}
                         onChange={handlerFunction}
                         displayEmpty
                         name={`${account}`}
-                        className={classes.selectEmpty}
+                        className={selectEmpty}
                     >
                         <MenuItem value="">
-                            <em>None</em>
+                            <em>{NONE}</em>
                         </MenuItem>
                         {
                             Object.entries(data).length !== 0
@@ -61,8 +72,6 @@ const AgentConfiguration = (props) => {
             </>
         )
     }
-
-
 
 
     return (
@@ -89,8 +98,8 @@ const AgentConfiguration = (props) => {
 
                 <DialogActions>
                     <Button onClick={handleClose} color="primary">
-                        Disagree
-          </Button>
+                        {OK}
+                    </Button>
                 </DialogActions>
             </Dialog>
         </div>
@@ -98,3 +107,13 @@ const AgentConfiguration = (props) => {
 }
 
 export default AgentConfiguration
+
+AgentConfiguration.propTypes = {
+    data: PropTypes.object,
+    handleClose: PropTypes.func,
+    handleFacebookAccountChange: PropTypes.func,
+    handleSquareAccountChange: PropTypes.func,
+    open: PropTypes.bool,
+    selectedFacebookAccount: PropTypes.string,
+    selectedSquareAccount: PropTypes.string,
+}

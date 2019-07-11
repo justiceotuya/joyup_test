@@ -1,20 +1,21 @@
-import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import React, { useState } from 'react';
+
 import classes from './Layout.module.css'
 import Navbar from './Navbar';
 import Sidebar from './Sidebar'
 
-export default function Layout({ children }) {
+const Layout = (props) => {
     const {
         root,
         content,
         toolbar,
     } = classes
 
-    const [mobileOpen, setMobileOpen] = useState(false);
+    const [isMobileOpen, setMobileOpen] = useState(false);
 
-    function handleDrawerToggle() {
-        setMobileOpen(!mobileOpen);
+    const handleDrawerToggle = () => {
+        setMobileOpen(!isMobileOpen);
     }
 
 
@@ -25,18 +26,18 @@ export default function Layout({ children }) {
             />
             <Sidebar
                 handleDrawerToggle={handleDrawerToggle}
-                mobileOpen={mobileOpen}
+                mobileOpen={isMobileOpen}
             />
             <main className={content}>
                 <div className={toolbar} />
-                {children}
+                {props.children}
             </main>
         </div >
     );
 }
 
+export default Layout
+
 Layout.propTypes = {
-    // Injected by the documentation to work in an iframe.
-    // You won't need it on your project.
     children: PropTypes.node,
 };
