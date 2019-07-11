@@ -1,15 +1,16 @@
 {
   "files": {
-    "main.css": "/joyup_test/static/css/main.47dc6eaa.chunk.css",
-    "main.js": "/joyup_test/static/js/main.695a03d1.chunk.js",
-    "main.js.map": "/joyup_test/static/js/main.695a03d1.chunk.js.map",
+    "main.css": "/joyup_test/static/css/main.7be06752.chunk.css",
+    "main.js": "/joyup_test/static/js/main.533df421.chunk.js",
+    "main.js.map": "/joyup_test/static/js/main.533df421.chunk.js.map",
     "runtime~main.js": "/joyup_test/static/js/runtime~main.9e89ffbb.js",
     "runtime~main.js.map": "/joyup_test/static/js/runtime~main.9e89ffbb.js.map",
-    "static/js/2.00e9be44.chunk.js": "/joyup_test/static/js/2.00e9be44.chunk.js",
-    "static/js/2.00e9be44.chunk.js.map": "/joyup_test/static/js/2.00e9be44.chunk.js.map",
+    "static/js/2.414f64e5.chunk.js": "/joyup_test/static/js/2.414f64e5.chunk.js",
+    "static/js/2.414f64e5.chunk.js.map": "/joyup_test/static/js/2.414f64e5.chunk.js.map",
     "index.html": "/joyup_test/index.html",
-    "precache-manifest.6ad7180e4b33ca8709a30ce5e94ef697.js": "/joyup_test/precache-manifest.6ad7180e4b33ca8709a30ce5e94ef697.js",
+    "precache-manifest.bb585d8781d5e92d7e2930d2d80a706b.js": "/joyup_test/precache-manifest.bb585d8781d5e92d7e2930d2d80a706b.js",
     "service-worker.js": "/joyup_test/service-worker.js",
-    "static/css/main.47dc6eaa.chunk.css.map": "/joyup_test/static/css/main.47dc6eaa.chunk.css.map"
+    "static/css/main.7be06752.chunk.css.map": "/joyup_test/static/css/main.7be06752.chunk.css.map",
+    "static/media/under_construction.svg": "/joyup_test/static/media/under_construction.be109dbc.svg"
   }
 }
