@@ -1,18 +1,18 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "35199f274dff440689a6775d2ae31951",
+    "revision": "53e92a28d56adc358e2488bb619bbb98",
     "url": "/joyup_test/index.html"
   },
   {
-    "revision": "6832c4f694d884d17946",
-    "url": "/joyup_test/static/css/main.d1c88a41.chunk.css"
+    "revision": "690fa7b3e68b8748a7cc",
+    "url": "/joyup_test/static/css/main.47dc6eaa.chunk.css"
   },
   {
     "revision": "365b832c97a87266a3ca",
     "url": "/joyup_test/static/js/2.00e9be44.chunk.js"
   },
   {
-    "revision": "6832c4f694d884d17946",
+    "revision": "690fa7b3e68b8748a7cc",
     "url": "/joyup_test/static/js/main.695a03d1.chunk.js"
   },
   {
