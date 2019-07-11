@@ -57,8 +57,8 @@ const Sidebar = ({ handleDrawerToggle, mobileOpen }) => {
                         menuItems.map(menuItem => {
                             const { item, icon } = menuItem;
                             return (
-                                <NavLink key={item} to={`${item}`} className={navlink} >
-                                    <ListItem button className={path.includes(item) ? navlink__item : navlink__item_hover}>
+                                <NavLink key={item} to={`${item.toLowerCase()}`} className={navlink} >
+                                    <ListItem button className={path.includes(item.toLowerCase()) ? navlink__item : navlink__item_hover}>
                                         <ListItemIcon className={path.includes(item) ? navlink__icon : navlink__icon_hover}>
 
                                             {
