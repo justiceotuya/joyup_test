@@ -120,7 +120,7 @@
     }
 
     .search__desktop {
-        display: flex;
+        display: flex !important;
         width: 30%;
         position: relative
     }

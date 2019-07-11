@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Layout from './components/layout'
 import Dashboard from './components/dashBoard'
 import './App.css'
 import { createMuiTheme } from '@material-ui/core/styles';
@@ -15,10 +14,8 @@ const muiTheme = createMuiTheme({
       main: '#1d7db9'
     }
   }
-
 }
 )
-console.log(muiTheme)
 class App extends Component {
   render() {
     return (

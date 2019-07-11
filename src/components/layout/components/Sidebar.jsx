@@ -41,7 +41,6 @@ const Sidebar = ({ handleDrawerToggle, mobileOpen }) => {
                                 <ListItemText primary={item} />
                             </ListItem>
                         })
-
                     }
                 </List>
             </Drawer>

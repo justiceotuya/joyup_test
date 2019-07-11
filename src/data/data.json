@@ -1,22 +1,238 @@
 [{
+        "id": 1,
         "logo": "http://www.pngmart.com/files/5/Mcdonalds-Logo-PNG-File.png",
-        "name": "McDonalds"
-    },
-    {
+        "name": "McDonalds",
+        "facebookAccountsData": [{
+                "id": 1,
+                "AccountName": "Southern Sun"
+            },
+            {
+                "id": 2,
+                "AccountName": "Pringles"
+            },
+            {
+                "id": 3,
+                "AccountName": "Estimated case"
+            }
+        ],
+        "squareAccountsData": [{
+            "id": 1,
+            "AccountName": "Square Sun"
+        }, {
+            "id": 2,
+            "AccountName": "Square Pringles"
+        }, {
+            "id": 3,
+            "AccountName": "Square case"
+        }]
+    }, {
+        "id": 2,
         "logo": "https://www.stickpng.com/assets/images/58429f65a6515b1e0ad75aed.png",
-        "name": "Lacoste"
+        "name": "Lacoste",
+        "facebookAccountsData": [{
+                "id": 1,
+                "AccountName": "Southern"
+            },
+            {
+                "id": 2,
+                "AccountName": "Santona"
+            },
+            {
+                "id": 3,
+                "AccountName": "Estimated"
+            },
+            {
+                "id": 4,
+                "AccountName": "Sqid"
+            },
+            {
+                "id": 5,
+                "AccountName": "Alabastar"
+            }
+        ],
+        "squareAccountsData": [{
+            "id": 1,
+            "AccountName": "Square Sun"
+        }, {
+            "id": 2,
+            "AccountName": "Square Pringles"
+        }, {
+            "id": 3,
+            "AccountName": "Square case"
+        }]
     }, {
+        "id": 3,
         "logo": "https://banner2.kisspng.com/20180414/krq/kisspng-nyse-colgate-palmolive-logo-axe-logo-5ad181d6135921.3140581115236797020793.jpg",
-        "name": "Colgate"
+        "name": "Colgate",
+        "facebookAccountsData": [{
+                "id": 1,
+                "AccountName": "Southern Sun"
+            },
+            {
+                "id": 2,
+                "AccountName": "Pringles"
+            },
+            {
+                "id": 3,
+                "AccountName": "Estimated case"
+            },
+            {
+                "id": 4,
+                "AccountName": "Just in"
+            },
+            {
+                "id": 5,
+                "AccountName": "Alabastar"
+            }
+        ],
+        "squareAccountsData": [{
+            "id": 1,
+            "AccountName": "Square Sun"
+        }, {
+            "id": 2,
+            "AccountName": "Square Pringles"
+        }, {
+            "id": 3,
+            "AccountName": "Square case"
+        }]
     }, {
+        "id": 4,
         "logo": "https://www.pinclipart.com/picdir/middle/52-522384_batman-png-images-batman-the-justice-bringer-png.png",
-        "name": "Batman"
+        "name": "Batman",
+        "facebookAccountsData": [{
+                "id": 1,
+                "AccountName": "Southern Sun"
+            },
+            {
+                "id": 2,
+                "AccountName": "Pringles"
+            },
+            {
+                "id": 3,
+                "AccountName": "Estimated case"
+            },
+            {
+                "id": 4,
+                "AccountName": "Just in"
+            },
+            {
+                "id": 5,
+                "AccountName": "Alabastar"
+            }
+        ],
+        "squareAccountsData": [{
+                "id": 1,
+                "AccountName": "Southern Sun"
+            },
+            {
+                "id": 2,
+                "AccountName": "Pringles"
+            },
+            {
+                "id": 3,
+                "AccountName": "Estimated case"
+            },
+            {
+                "id": 4,
+                "AccountName": "Just in"
+            },
+            {
+                "id": 5,
+                "AccountName": "Alabastar"
+            }
+        ]
     }, {
+        "id": 5,
         "logo": "https://cdn.freebiesupply.com/images/large/2x/bp-logo-png-transparent.png",
-        "name": "BP"
+        "name": "BP",
+        "facebookAccountsData": [{
+                "id": 1,
+                "AccountName": "Southern Sun"
+            },
+            {
+                "id": 2,
+                "AccountName": "Pringles"
+            },
+            {
+                "id": 3,
+                "AccountName": "Estimated case"
+            },
+            {
+                "id": 4,
+                "AccountName": "Just in"
+            },
+            {
+                "id": 5,
+                "AccountName": "Alabastar"
+            }
+        ],
+        "squareAccountsData": [{
+                "id": 1,
+                "AccountName": "Southern Sun"
+            },
+            {
+                "id": 2,
+                "AccountName": "Pringles"
+            },
+            {
+                "id": 3,
+                "AccountName": "Estimated case"
+            },
+            {
+                "id": 4,
+                "AccountName": "Just in"
+            },
+            {
+                "id": 5,
+                "AccountName": "Alabastar"
+            }
+        ]
     }, {
+        "id": 6,
         "logo": "https://banner2.kisspng.com/20180704/lhl/kisspng-apple-logo-5b3ca69805e605.3276431915307014640242.jpg",
-        "name": "Apple"
+        "name": "Apple",
+        "facebookAccountsData": [{
+                "id": 1,
+                "AccountName": "Southern Sun"
+            },
+            {
+                "id": 2,
+                "AccountName": "Pringles"
+            },
+            {
+                "id": 3,
+                "AccountName": "Estimated case"
+            },
+            {
+                "id": 4,
+                "AccountName": "Just in"
+            },
+            {
+                "id": 5,
+                "AccountName": "Alabastar"
+            }
+        ],
+        "squareAccountsData": [{
+                "id": 1,
+                "AccountName": "Southern Sun"
+            },
+            {
+                "id": 2,
+                "AccountName": "Pringles"
+            },
+            {
+                "id": 3,
+                "AccountName": "Estimated case"
+            },
+            {
+                "id": 4,
+                "AccountName": "Just in"
+            },
+            {
+                "id": 5,
+                "AccountName": "Alabastar"
+            }
+        ]
     }
 
 ]

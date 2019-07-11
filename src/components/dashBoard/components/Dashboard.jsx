@@ -12,7 +12,7 @@ import agentData from '../../../data/data.json'
 
 export default function Dashboard({ children }) {
     const [isSearchOpen, setIsSearchOpen] = useState(false);
-    const [data, setData] = useState(agentData)
+    const [data] = useState(agentData)
     const [searchData, setSearchData] = useState(data)
 
     const {

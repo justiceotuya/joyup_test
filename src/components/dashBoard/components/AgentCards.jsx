@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     Typography,
     IconButton,
@@ -6,9 +6,8 @@ import {
     Avatar
 } from '@material-ui/core';
 import SettingIcon from '@material-ui/icons/Settings';
-import { agents } from '../constants'
 import classes from './Dashboard.module.css';
-
+import AgentConfiguration from './AgentsConfiguration'
 
 const AgentCards = ({ data }) => {
     const {
@@ -25,19 +24,55 @@ const AgentCards = ({ data }) => {
         settings_icon
     } = classes;
 
+    const [open, setOpen] = useState(false);
+    const [currentItem, setCurrentItem] = useState({})
+    const [selectedFacebookAccount, setSelectedFacebookAccount] = useState('');
+    const [selectedSquareAccount, setSelectedSquareAccount] = useState('');
+
+    const handleFacebookAccountChange = (event) => {
+        setSelectedFacebookAccount(event.target.value)
+    }
+
+    const handleSquareAccountChange = (event) => {
+        setSelectedSquareAccount(event.target.value)
+    }
+
+    const handleConfigureButtonClick = (e, items) => {
+        setOpen(true);
+        data.map(item => {
+            const { id } = item
+            if (id === items) {
+             return  setCurrentItem(item)
+            }else{
+                return null
+            }
+        })
+    }
+
+
+    const handleClose = () => {
+        setOpen(false);
+        setSelectedSquareAccount('')
+        setSelectedFacebookAccount('')
+    }
+
+
     return (
         <main className={dashboard__content}>
 
             {
                 data.map(agent => {
-                    const { logo, name } = agent;
+                    const { logo, name, id } = agent;
                     return (
-                        <section className={`${card} ${card__box}`} key={name}>
+                        <section className={`${card} ${card__box}`} key={id}>
                             <div className={card__box_inner}>
                                 {/* setting icon */}
                                 <div className={clearfix}>
-                                    <IconButton className={card__box_settings_icon}>
-                                        <SettingIcon className={settings_icon} />
+                                    <IconButton className={card__box_settings_icon}
+                                        onClick={(e) => handleConfigureButtonClick(e, id)}
+                                    >
+                                        <SettingIcon className={settings_icon}
+                                        />
                                     </IconButton>
                                 </div>
 
@@ -74,6 +109,15 @@ const AgentCards = ({ data }) => {
                     )
                 })
             }
+            <AgentConfiguration
+                open={open}
+                handleClose={handleClose}
+                data={currentItem}
+                selectedFacebookAccount={selectedFacebookAccount}
+                selectedSquareAccount={selectedSquareAccount}
+                handleFacebookAccountChange={handleFacebookAccountChange}
+                handleSquareAccountChange={handleSquareAccountChange}
+            />
         </main>
 
     )
