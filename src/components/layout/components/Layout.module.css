@@ -56,7 +56,7 @@
 }
 
 .navlink__item_hover:hover .navlink__icon_hover,
-.navlink__icon {
+.navlink__item .navlink__icon_hover {
     color: #1d7db9 !important
 }
 
