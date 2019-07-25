@@ -1,5 +1,5 @@
 export const STRINGS = {
-    NONE: 'None',
+    NONE: 'Select Account',
     OK: 'OK',
     MARVEL_COMICS: 'Marvel Comics',
     SEARCH_AGENT: 'Search Agents',

@@ -1,23 +1,57 @@
-import React, { useState } from 'react';
+import axios from 'axios';
+import React, { useState, useEffect } from 'react';
 import { IconButton, Typography } from '@material-ui/core';
 import Layout from '../../layout';
 import SearchIcon from '@material-ui/icons/Search';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 import AgentCards from './AgentCards';
 import agentData from '../../../data/data.json'
 import classes from './Dashboard.module.css';
 import { STRINGS } from '../constants';
+import { flexbox } from '@material-ui/system';
 
-require('react-dom');
-window.React2 = require('react');
 
 //This component renders the dashboard of the app
 const Dashboard = () => {
     const [isSearchOpen, setIsSearchOpen] = useState(false);
-    const [data, setData] = useState(agentData);
-    const [searchData, setSearchData] = useState(data);
+    const [data, setData] = useState([]);
+    const [facebookToken, setFacebookToken] = useState('');
+    const [merchantsFacebookPages, setMerchantsFacebookPages] = useState([]);
+    const [isDataFetching, setIsDataFetching] = useState(false)
+    const [searchData, setSearchData] = useState([]);
+    const [merchantID, setmerchantID] = useState('5d39c00b4d3f616e4c976ccb')
     const { SEARCH_AGENT, NEW_ORDERS, TOTAL } = STRINGS;
 
+
+
+    useEffect(() => {
+        fetchData()
+    }, [])
+
+    const fetchData = React.useCallback(async () => {
+        setIsDataFetching(true)
+        try {
+            const response = await axios.post('http://localhost:4000/get/fetch_Merchants_data',
+                {
+                    merchantID
+                })
+
+            let merchantData = response.data.merchant
+            let merchantsFacebookPages = response.data.response.data
+
+            const { facebook_page_ids, facebook_token } = merchantData
+            setMerchantsFacebookPages(merchantsFacebookPages)
+            setFacebookToken(facebook_token)
+            setData(facebook_page_ids)
+            setSearchData(facebook_page_ids)
+            setIsDataFetching(false)
+        } catch (error) {
+            setIsDataFetching(false)
+            console.log(error)
+        }
+
+    })
 
     const {
         card,
@@ -26,7 +60,8 @@ const Dashboard = () => {
         search__desktop,
         search__desktop_icon,
         searchInput__desktop,
-        card__search
+        card__search,
+        loading
     } = classes;
 
     const handleAgentSearch = (e) => {
@@ -92,8 +127,15 @@ const Dashboard = () => {
                     />
                 </div>
             </section>
-            <AgentCards data={searchData} />
-        </Layout>
+            {
+                isDataFetching ?
+                    <div className={loading}>
+                        <CircularProgress />
+                    </div>
+                    :
+                    <AgentCards data={data} agentsData={searchData} facebookToken={facebookToken} fetchData={fetchData} merchantsFacebookPages={merchantsFacebookPages} merchantID={merchantID} />
+            }
+        </Layout >
     );
 }
 

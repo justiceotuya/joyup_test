@@ -1,5 +1,6 @@
-import { Avatar, FormControl, MenuItem, Select } from '@material-ui/core'
-import React from 'react';
+import { Avatar, FormControl, MenuItem, Select } from '@material-ui/core';
+import axios from 'axios';
+import React, { useState } from 'react';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -13,6 +14,8 @@ import { STRINGS } from '../constants'
 
 const { NONE, OK } = STRINGS
 
+
+
 const AgentConfiguration = props => {
     const {
         open,
@@ -22,8 +25,14 @@ const AgentConfiguration = props => {
         selectedSquareAccount,
         handleFacebookAccountChange,
         handleSquareAccountChange,
+        loading,
+        merchantsFacebookPages
     } = props;
 
+
+    const { name, logo, location_ids, facebook_page_ids, facebook_page_id, _id, selected_square_account } = data
+
+    console.log('aaa', data)
     // styles
     const {
         card__box_company_logo,
@@ -31,7 +40,18 @@ const AgentConfiguration = props => {
         selectEmpty
     } = classes;
 
-    const { name, logo, squareAccountsData, facebookAccountsData } = data
+    const addNewSquareAccount = async () => {
+        try {
+            const response = await axios('http://localhost:3000/square/account/switch')
+            console.log('response - /square/account/switch', response)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+
+
+
 
     /**
      *
@@ -41,16 +61,18 @@ const AgentConfiguration = props => {
      * @param {Func} handlerFunction The function thats perform selection action when an account of a social media is selected
      */
 
-    const generateAccount = (account = '', nameOfAccount = '', accountsData = [], handlerFunction = null) => {
+    const generateAccount = (account = {}, nameOfAccount = '', accountsData = [], handlerFunction = null, currentSelectedAccount = '') => {
+        console.log('data', data)
+        const { id, name } = account;
         return (
             <>
-                <DialogContentText>{nameOfAccount}: <strong>{`${account}`}</strong> </DialogContentText>
+                <DialogContentText>{nameOfAccount}: <strong>{currentSelectedAccount && `${name}`}</strong> </DialogContentText>
                 <FormControl className={formControl}>
                     <Select
-                        value={account}
+                        value={id}
                         onChange={handlerFunction}
                         displayEmpty
-                        name={`${account}`}
+                        // name={name}
                         className={selectEmpty}
                     >
                         <MenuItem value="">
@@ -60,10 +82,17 @@ const AgentConfiguration = props => {
                             Object.entries(data).length !== 0
                                 ?
                                 accountsData.map(item => {
-                                    const { id, AccountName } = item
-                                    return (
-                                        <MenuItem key={id} value={AccountName}>{AccountName}</MenuItem>
-                                    )
+                                    if (nameOfAccount === 'Facebook Account') {
+                                        const { _id, id, name } = item
+                                        return (
+                                            <MenuItem key={_id} name={name} value={id}>{name}</MenuItem>
+                                        )
+                                    } else if (nameOfAccount === 'Square Account') {
+                                        const { _id, id, AccountName } = item
+                                        return (
+                                            <MenuItem key={_id} value={id}>{AccountName}</MenuItem>
+                                        )
+                                    }
                                 })
                                 : null
                         }
@@ -87,12 +116,14 @@ const AgentConfiguration = props => {
 
                     <DialogContent>
                         {
-                            generateAccount(selectedFacebookAccount, 'Facebook Account', facebookAccountsData, handleFacebookAccountChange)
+                            generateAccount(selectedFacebookAccount, 'Facebook Account', merchantsFacebookPages, handleFacebookAccountChange, facebook_page_id)
                         }
                     </DialogContent>
-                    <DialogContent>
-                        {generateAccount(selectedSquareAccount, 'Square Account', squareAccountsData, handleSquareAccountChange)}
-                    </DialogContent>
+                    {/* <DialogContent>
+                        {generateAccount(selectedSquareAccount, 'Square Account', location_ids, handleSquareAccountChange, selected_square_account)}
+                        <br />
+                        <Button onClick={addNewSquareAccount} color="secondary">Add Square Account</Button>
+                    </DialogContent> */}
                 </DialogContent>
 
 
@@ -101,8 +132,9 @@ const AgentConfiguration = props => {
                         {OK}
                     </Button>
                 </DialogActions>
+
             </Dialog>
-        </div>
+        </div >
     );
 }
 

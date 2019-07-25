@@ -91,6 +91,13 @@
     display: none
 }
 
+.loading {
+    width: 100%;
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
 
 .card__box {
     border-radius: 5px;
