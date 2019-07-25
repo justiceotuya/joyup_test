@@ -31,8 +31,7 @@ const AgentConfiguration = props => {
 
 
     const { name, logo, location_ids, facebook_page_ids, facebook_page_id, _id, selected_square_account } = data
-
-    console.log('aaa', data)
+    console.log(data)
     // styles
     const {
         card__box_company_logo,
@@ -51,8 +50,6 @@ const AgentConfiguration = props => {
 
 
 
-
-
     /**
      *
      * @param {String} account The currect selected account of the social media network e.g facebook
@@ -61,8 +58,7 @@ const AgentConfiguration = props => {
      * @param {Func} handlerFunction The function thats perform selection action when an account of a social media is selected
      */
 
-    const generateAccount = (account = {}, nameOfAccount = '', accountsData = [], handlerFunction = null, currentSelectedAccount = '') => {
-        console.log('data', data)
+    const generateAccount = (account = {}, nameOfAccount = '', accountsData = [], handlerFunction = null, currentSelectedAccount = {}) => {
         const { id, name } = account;
         return (
             <>
@@ -71,8 +67,7 @@ const AgentConfiguration = props => {
                     <Select
                         value={id}
                         onChange={handlerFunction}
-                        displayEmpty
-                        // name={name}
+                        name={name}
                         className={selectEmpty}
                     >
                         <MenuItem value="">
@@ -83,14 +78,14 @@ const AgentConfiguration = props => {
                                 ?
                                 accountsData.map(item => {
                                     if (nameOfAccount === 'Facebook Account') {
-                                        const { _id, id, name } = item
+                                        const { id, name } = item
                                         return (
-                                            <MenuItem key={_id} name={name} value={id}>{name}</MenuItem>
+                                            <MenuItem key={id} value={id}>{name}</MenuItem>
                                         )
                                     } else if (nameOfAccount === 'Square Account') {
-                                        const { _id, id, AccountName } = item
+                                        const { id, AccountName } = item
                                         return (
-                                            <MenuItem key={_id} value={id}>{AccountName}</MenuItem>
+                                            <MenuItem key={id} value={id}>{AccountName}</MenuItem>
                                         )
                                     }
                                 })
@@ -107,7 +102,7 @@ const AgentConfiguration = props => {
         <div>
             <Dialog
                 open={open}
-                onClose={handleClose}
+                onClose={() => handleClose('test')}
                 aria-labelledby="responsive-dialog-title"
             >
                 <DialogTitle id="responsive-dialog-title">{`Edit configuration for ${name}`}</DialogTitle>
@@ -146,6 +141,9 @@ AgentConfiguration.propTypes = {
     handleFacebookAccountChange: PropTypes.func,
     handleSquareAccountChange: PropTypes.func,
     open: PropTypes.bool,
-    selectedFacebookAccount: PropTypes.string,
+    selectedFacebookAccount: PropTypes.shape({
+        id: PropTypes.string,
+        name: PropTypes.string,
+    }),
     selectedSquareAccount: PropTypes.string,
 }

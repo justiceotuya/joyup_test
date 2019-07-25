@@ -16,7 +16,7 @@ const AgentCards = ({ data, agentsData, fetchData, facebookToken, merchantsFaceb
     const [open, setOpen] = useState(false);
     //we need to keep track of the card that contains the info that is currently selected
     const [currentItem, setCurrentItem] = useState({})
-    const [selectedFacebookAccount, setSelectedFacebookAccount] = useState({});
+    const [selectedFacebookAccount, setSelectedFacebookAccount] = useState({ name: "", id: "" });
     const [selectedSquareAccount, setSelectedSquareAccount] = useState('');
     const [loading, setLoading] = useState(false)
 
@@ -61,13 +61,13 @@ const AgentCards = ({ data, agentsData, fetchData, facebookToken, merchantsFaceb
                 })
 
             let selectedFbAccount = response.data
-            console.log('Response', response.data)
             if (selectedFbAccount.facebook_page_id !== null) {
                 data.map(item => {
                     const { name } = item
+                    console.log('selectedFbAccount', response)
+                    console.log('item', item)
                     if (item.id === selectedFbAccount.facebook_page_id) {
-                        console.log('this is fuck', item.name)
-                        setCurrentItem(item)
+
                         setSelectedFacebookAccount({ id: selectedFbAccount.facebook_page_id, name })
                     }
                 })
@@ -78,17 +78,8 @@ const AgentCards = ({ data, agentsData, fetchData, facebookToken, merchantsFaceb
         }
     }
 
-
-    // const handleFacebookAccountChange = (event) => {
-    //     updateMerchantSelectedFacebook(merchantID, event.target.value)
-    //         .then(() =>
-    //             fetchMerchantSelectedFacebook(merchantID)
-    //         )
-    // }
-
     const handleFacebookAccountChange = (event) => {
         merchantsFacebookPages.map(item => {
-            console.log(item)
             const { name } = item
             if (item.id === event.target.value) {
                 setSelectedFacebookAccount({ id: event.target.value, name })
@@ -132,14 +123,11 @@ const AgentCards = ({ data, agentsData, fetchData, facebookToken, merchantsFaceb
 
     //closing the modal
     const handleClose = (e, item) => {
-        console.log(item)
         setOpen(false);
         updateMerchantSelectedFacebook(merchantID, selectedFacebookAccount.id)
             .then(() =>
                 fetchMerchantSelectedFacebook(merchantID)
             )
-        // setSelectedFacebookAccount({})
-        // setSelectedSquareAccount('')
     }
 
     const { name, facebook_page_ids } = data
