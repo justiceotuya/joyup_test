@@ -119,11 +119,11 @@ const AgentConfiguration = props => {
                             generateAccount(selectedFacebookAccount, 'Facebook Account', merchantsFacebookPages, handleFacebookAccountChange, facebook_page_id)
                         }
                     </DialogContent>
-                    {/* <DialogContent>
+                    <DialogContent>
                         {generateAccount(selectedSquareAccount, 'Square Account', location_ids, handleSquareAccountChange, selected_square_account)}
                         <br />
                         <Button onClick={addNewSquareAccount} color="secondary">Add Square Account</Button>
-                    </DialogContent> */}
+                    </DialogContent>
                 </DialogContent>
 
 
